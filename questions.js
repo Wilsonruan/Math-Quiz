@@ -16,7 +16,6 @@ var correctSound = document.getElementById('correct-sound')
 var incorrectSound = document.getElementById('incorrect-sound')
 
 if (arrayHighScores === null) {
-  console.log(arrayHighScores);
   arrayHighScores = [];
 }
 
@@ -103,7 +102,7 @@ function getPlayerName() { //Step 5: Get player's name.
   }
   inputBoxPlayerName.children[0].innerHTML = 'Your score is ' + countDown
   inputBoxPlayerName.children[4].addEventListener('click', (event) => {
-      event.preventDefault()
+    event.preventDefault()
     var checkInputBox = /^[a-z]+$/gi;
     var resultsInputBox = checkInputBox.test(inputBoxPlayerName.children[2].value);
     inputBoxPlayerName.children[2].value = inputBoxPlayerName.children[2].value.toUpperCase();
@@ -143,7 +142,6 @@ function viewResults() { //Step 6: View High Score
   submissionResponse.classList.remove('hide');
   inputBoxPlayerName.classList.add('hide');
   navBar.children[1].textContent = "Timer: 0";
-  console.log(arrayHighScores);
   var JSONReadyUsers = JSON.stringify(arrayHighScores);
   localStorage.setItem("arrayHighScores", JSONReadyUsers);
 }
@@ -155,59 +153,54 @@ function clearHighScore() {
 }
 
 function pickquestion() {
-console.log(allQuestions.length);
   for (var i = 0; i < allQuestions.length; i++) {
     if (startButton.children[4].children[i].children[0].checked) {
-    questions = allQuestions[i];
+      questions = allQuestions[i];
     }
   }
 }
 
 
-var allQuestions = [  
+var allQuestions = [
   [ //JavaScript Questions
-  {
-    title: "Commonly used data types DO NOT include:",
-    choices: [
-      { text: "strings", correct: false },
-      { text: "booleans", correct: false },
-      { text: "alerts", correct: true },
-      { text: "numbers", correct: false },]
-  },
-  {
-    title: "The condition in an if / else statement is enclosed within ____.",
-    choices: [
-      { text: "quotes", correct: false },
-      { text: "curly brackets", correct: false },
-      { text: "parentheses", correct: true },
-      { text: "nsquare brackets", correct: false },]
-  },
-  {
-    title: "Which of the following will write Hello World in an alert box?",
-    choices: [
-      { text: "msg('Hello World')", correct: false },
-      { text: "alertBox('Hello World')", correct: false },
-      { text: "alert('Hello World')", correct: true },
-      { text: "msgBox('Hello World')", correct: false },]
-  },
-  {
-    title: "How to call a function named myfunction",
-    choices: [
-      { text: "call myfunction", correct: false },
-      { text: "myfunction call", correct: false },
-      { text: "myfunction()", correct: true },
-      { text: "()myfunction", correct: false },]
-  },
-  {
-    title: "What does this line mean 'while (exitNow == true)'?",
-    choices: [
-      { text: "No meaning", correct: false },
-      { text: "exit while when exitNow is false", correct: false },
-      { text: "exit while when exitNow is true", correct: true },
-      { text: "All Above", correct: false },]
-  }
-],
-   [  //HTML Questions
+    { title: "2 x 2", choices: [{ text: "6", correct: false }, { text: "8", correct: false }, { text: "4", correct: true }, { text: "2", correct: false },] },
+    { title: "3 x 2", choices: [{ text: "8", correct: false }, { text: "10", correct: false }, { text: "6", correct: true }, { text: "4", correct: false },] },
+    { title: "4 x 2", choices: [{ text: "10", correct: false }, { text: "12", correct: false }, { text: "8", correct: true }, { text: "6", correct: false },] },
+    { title: "5 x 2", choices: [{ text: "12", correct: false }, { text: "14", correct: false }, { text: "10", correct: true }, { text: "8", correct: false },] },
+    { title: "6 x 2", choices: [{ text: "14", correct: false }, { text: "16", correct: false }, { text: "12", correct: true }, { text: "10", correct: false },] },
+    { title: "7 x 2", choices: [{ text: "16", correct: false }, { text: "18", correct: false }, { text: "14", correct: true }, { text: "12", correct: false },] },
+    { title: "8 x 2", choices: [{ text: "18", correct: false }, { text: "9", correct: false }, { text: "16", correct: true }, { text: "14", correct: false },] },
+    { title: "9 x 2", choices: [{ text: "9", correct: false }, { text: "12", correct: false }, { text: "18", correct: true }, { text: "16", correct: false },] },
+    { title: "3 x 3", choices: [{ text: "12", correct: false }, { text: "15", correct: false }, { text: "9", correct: true }, { text: "18", correct: false },] },
+    { title: "4 x 3", choices: [{ text: "15", correct: false }, { text: "18", correct: false }, { text: "12", correct: true }, { text: "9", correct: false },] },
+    { title: "5 x 3", choices: [{ text: "18", correct: false }, { text: "21", correct: false }, { text: "15", correct: true }, { text: "12", correct: false },] },
+    { title: "6 x 3", choices: [{ text: "21", correct: false }, { text: "24", correct: false }, { text: "18", correct: true }, { text: "15", correct: false },] },
+    { title: "7 x 3", choices: [{ text: "24", correct: false }, { text: "27", correct: false }, { text: "21", correct: true }, { text: "18", correct: false },] },
+    { title: "8 x 3", choices: [{ text: "27", correct: false }, { text: "16", correct: false }, { text: "24", correct: true }, { text: "21", correct: false },] },
+    { title: "9 x 3", choices: [{ text: "16", correct: false }, { text: "20", correct: false }, { text: "27", correct: true }, { text: "24", correct: false },] },
+    { title: "4 x 4", choices: [{ text: "20", correct: false }, { text: "24", correct: false }, { text: "16", correct: true }, { text: "27", correct: false },] },
+    { title: "5 x 4", choices: [{ text: "24", correct: false }, { text: "28", correct: false }, { text: "20", correct: true }, { text: "16", correct: false },] },
+    { title: "6 x 4", choices: [{ text: "28", correct: false }, { text: "32", correct: false }, { text: "24", correct: true }, { text: "20", correct: false },] },
+    { title: "7 x 4", choices: [{ text: "32", correct: false }, { text: "36", correct: false }, { text: "28", correct: true }, { text: "24", correct: false },] },
+    { title: "8 x 4", choices: [{ text: "36", correct: false }, { text: "25", correct: false }, { text: "32", correct: true }, { text: "28", correct: false },] },
+    { title: "9 x 4", choices: [{ text: "25", correct: false }, { text: "30", correct: false }, { text: "36", correct: true }, { text: "32", correct: false },] },
+    { title: "5 x 5", choices: [{ text: "30", correct: false }, { text: "35", correct: false }, { text: "25", correct: true }, { text: "36", correct: false },] },
+    { title: "6 x 5", choices: [{ text: "35", correct: false }, { text: "40", correct: false }, { text: "30", correct: true }, { text: "25", correct: false },] },
+    { title: "7 x 5", choices: [{ text: "40", correct: false }, { text: "45", correct: false }, { text: "35", correct: true }, { text: "30", correct: false },] },
+    { title: "8 x 5", choices: [{ text: "45", correct: false }, { text: "36", correct: false }, { text: "40", correct: true }, { text: "35", correct: false },] },
+    { title: "9 x 5", choices: [{ text: "36", correct: false }, { text: "42", correct: false }, { text: "45", correct: true }, { text: "40", correct: false },] },
+    { title: "6 x 6", choices: [{ text: "42", correct: false }, { text: "48", correct: false }, { text: "36", correct: true }, { text: "45", correct: false },] },
+    { title: "7 x 6", choices: [{ text: "48", correct: false }, { text: "54", correct: false }, { text: "42", correct: true }, { text: "36", correct: false },] },
+    { title: "8 x 6", choices: [{ text: "54", correct: false }, { text: "49", correct: false }, { text: "48", correct: true }, { text: "42", correct: false },] },
+    { title: "9 x 6", choices: [{ text: "49", correct: false }, { text: "56", correct: false }, { text: "54", correct: true }, { text: "48", correct: false },] },
+    { title: "7 x 7", choices: [{ text: "56", correct: false }, { text: "63", correct: false }, { text: "49", correct: true }, { text: "54", correct: false },] },
+    { title: "8 x 7", choices: [{ text: "63", correct: false }, { text: "64", correct: false }, { text: "56", correct: true }, { text: "49", correct: false },] },
+    { title: "9 x 7", choices: [{ text: "64", correct: false }, { text: "72", correct: false }, { text: "63", correct: true }, { text: "56", correct: false },] },
+    { title: "8 x 8", choices: [{ text: "72", correct: false }, { text: "81", correct: false }, { text: "64", correct: true }, { text: "63", correct: false },] },
+    { title: "9 x 8", choices: [{ text: "81", correct: false }, { text: "90", correct: false }, { text: "72", correct: true }, { text: "64", correct: false },] },
+    { title: "9 x 9", choices: [{ text: "90", correct: false }, { text: "99", correct: false }, { text: "81", correct: true }, { text: "72", correct: false },] }
+  ],
+  [  //HTML Questions
     {
       title: "What does HTML stand for?",
       choices: [
@@ -248,7 +241,7 @@ var allQuestions = [
         { text: "Provide additional information about HTML elements", correct: true },
         { text: "All Above", correct: false },]
     }
-  ],  [ //CSS Questions
+  ], [ //CSS Questions
     {
       title: "What does CSS stands for",
       choices: [
@@ -289,7 +282,7 @@ var allQuestions = [
         { text: "/* this is a comment */", correct: true },
         { text: "' this is a comment", correct: false },]
     }
-  ],  [ //Math Questions
+  ], [ //Math Questions
     {
       title: "What is 25 * 37?",
       choices: [
@@ -330,5 +323,5 @@ var allQuestions = [
         { text: "2881", correct: true },
         { text: "2882", correct: false },]
     }
-  ]  
+  ]
 ]
