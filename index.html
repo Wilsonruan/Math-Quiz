@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Quiz</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="questions.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav id="nav-bar">
+            <button class="nav-link btn btn-primary float-left">View HighScore</button>
+            <h1 class="float-right">Timer: 0</h1>
+        </nav>
+    </header>
+    <br>
+    <div class="container jumbotron">
+        <div id="question-container" class="hide">
+            <div>Question</div>
+            <div class="btn-grid col-9 col-sm-6"></div>
+            <p></p>
+        </div>
+        <div class="controls " id="start-btn">
+            <button type="button" class="start-btn btn btn-primary">Start Quiz</button>
+            <button type="button" class="start-btn btn btn-primary hide">Clear Score</button>
+            <br>
+            <br>
+            <form class="col-9 d-flex justify-content-between" action="">
+                <label>
+                    <input id="special-characters" name="user-recommend" value="special-characters" type="radio"
+                      class="input-checkbox" checked/> JavaScript Test</label>
+                  <label>
+                    <input id="numeric-characters" name="user-recommend" value="numeric-characters" type="radio"
+                      class="input-checkbox"/> HTML Test</label>
+                  <label>
+                    <input id="lowercase-characters" name="user-recommend" value="lowercase-characters" type="radio"
+                      class="input-checkbox"/> CSS Test</label>
+                  <label>
+                    <input id="uppercase-characters" name="user-recommend" value="uppercase-characters" type="radio"
+                      class="input-checkbox"/> Math Test</label>
+            </form>
+            <br>
+        </div>
+        <form id="input-box-name" class="hide col-sm-8" method="POST">
+            <p></p>
+            <label for="input-name"></label>
+            <input type="text" class="form-control col-6" name="input-name">
+            <br>
+            <button class="form-group btn btn-primary float-right">Submit</button>
+            <br>
+        </form>
+        <div id="show-results" class="hide">
+            <p></p> 
+            <div id="high-score"></div>
+        </div>
+        <div>
+            <audio id="correct-sound" src="./assets/sounds/correct-sound.wav"></audio>
+            <audio id="incorrect-sound" src="./assets/sounds/incorrect-sound.mp3"></audio>
+        </div>
+    </div>
+</body>
+
+</html>
