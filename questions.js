@@ -258,48 +258,45 @@ var allQuestions = [
     { title: "64 ÷ 8", choices: [{ text: "64", correct: false }, { text: "7", correct: false }, { text: "8", correct: true }, { text: "63", correct: false },] },
     { title: "72 ÷ 8", choices: [{ text: "65", correct: false }, { text: "8", correct: false }, { text: "9", correct: true }, { text: "64", correct: false },] },
     { title: "81 ÷ 9", choices: [{ text: "73", correct: false }, { text: "8", correct: false }, { text: "9", correct: true }, { text: "72", correct: false },] }
+  ],
+  [ //Adding Questions
+    {title: "2 + 2", choices: [{ text: "3", correct: false }, { text: "3", correct: false }, { text: "4", correct: true }, { text: "2", correct: false },]},
+    {title: "3 + 2", choices: [{ text: "5", correct: false }, { text: "4", correct: false }, { text: "5", correct: true }, { text: "4", correct: false },]},
+    {title: "4 + 2", choices: [{ text: "7", correct: false }, { text: "5", correct: false }, { text: "6", correct: true }, { text: "6", correct: false },]},
+    {title: "5 + 2", choices: [{ text: "9", correct: false }, { text: "6", correct: false }, { text: "7", correct: true }, { text: "8", correct: false },]},
+    {title: "6 + 2", choices: [{ text: "11", correct: false }, { text: "7", correct: false }, { text: "8", correct: true }, { text: "10", correct: false },]},
+    {title: "7 + 2", choices: [{ text: "13", correct: false }, { text: "8", correct: false }, { text: "9", correct: true }, { text: "12", correct: false },]},
+    {title: "8 + 2", choices: [{ text: "15", correct: false }, { text: "9", correct: false }, { text: "10", correct: true }, { text: "14", correct: false },]},
+    {title: "9 + 2", choices: [{ text: "17", correct: false }, { text: "10", correct: false }, { text: "11", correct: true }, { text: "16", correct: false },]},
+    {title: "3 + 3", choices: [{ text: "19", correct: false }, { text: "5", correct: false }, { text: "6", correct: true }, { text: "18", correct: false },]},
+    {title: "4 + 3", choices: [{ text: "10", correct: false }, { text: "6", correct: false }, { text: "7", correct: true }, { text: "9", correct: false },]},
+    {title: "5 + 3", choices: [{ text: "13", correct: false }, { text: "7", correct: false }, { text: "8", correct: true }, { text: "12", correct: false },]},
+    {title: "6 + 3", choices: [{ text: "16", correct: false }, { text: "8", correct: false }, { text: "9", correct: true }, { text: "15", correct: false },]},
+    {title: "7 + 3", choices: [{ text: "19", correct: false }, { text: "9", correct: false }, { text: "10", correct: true }, { text: "18", correct: false },]},
+    {title: "8 + 3", choices: [{ text: "22", correct: false }, { text: "10", correct: false }, { text: "11", correct: true }, { text: "21", correct: false },]},
+    {title: "9 + 3", choices: [{ text: "25", correct: false }, { text: "11", correct: false }, { text: "12", correct: true }, { text: "24", correct: false },]},
+    {title: "4 + 4", choices: [{ text: "28", correct: false }, { text: "7", correct: false }, { text: "8", correct: true }, { text: "27", correct: false },]},
+    {title: "5 + 4", choices: [{ text: "17", correct: false }, { text: "8", correct: false }, { text: "9", correct: true }, { text: "16", correct: false },]},
+    {title: "6 + 4", choices: [{ text: "21", correct: false }, { text: "9", correct: false }, { text: "10", correct: true }, { text: "20", correct: false },]},
+    {title: "7 + 4", choices: [{ text: "25", correct: false }, { text: "10", correct: false }, { text: "11", correct: true }, { text: "24", correct: false },]},
+    {title: "8 + 4", choices: [{ text: "29", correct: false }, { text: "11", correct: false }, { text: "12", correct: true }, { text: "28", correct: false },]},
+    {title: "9 + 4", choices: [{ text: "33", correct: false }, { text: "12", correct: false }, { text: "13", correct: true }, { text: "32", correct: false },]},
+    {title: "5 + 5", choices: [{ text: "37", correct: false }, { text: "9", correct: false }, { text: "10", correct: true }, { text: "36", correct: false },]},
+    {title: "6 + 5", choices: [{ text: "26", correct: false }, { text: "10", correct: false }, { text: "11", correct: true }, { text: "25", correct: false },]},
+    {title: "7 + 5", choices: [{ text: "31", correct: false }, { text: "11", correct: false }, { text: "12", correct: true }, { text: "30", correct: false },]},
+    {title: "8 + 5", choices: [{ text: "36", correct: false }, { text: "12", correct: false }, { text: "13", correct: true }, { text: "35", correct: false },]},
+    {title: "9 + 5", choices: [{ text: "41", correct: false }, { text: "13", correct: false }, { text: "14", correct: true }, { text: "40", correct: false },]},
+    {title: "6 + 6", choices: [{ text: "46", correct: false }, { text: "11", correct: false }, { text: "12", correct: true }, { text: "45", correct: false },]},
+    {title: "7 + 6", choices: [{ text: "37", correct: false }, { text: "12", correct: false }, { text: "13", correct: true }, { text: "36", correct: false },]},
+    {title: "8 + 6", choices: [{ text: "43", correct: false }, { text: "13", correct: false }, { text: "14", correct: true }, { text: "42", correct: false },]},
+    {title: "9 + 6", choices: [{ text: "49", correct: false }, { text: "14", correct: false }, { text: "15", correct: true }, { text: "48", correct: false },]},
+    {title: "7 + 7", choices: [{ text: "55", correct: false }, { text: "13", correct: false }, { text: "14", correct: true }, { text: "54", correct: false },]},
+    {title: "8 + 7", choices: [{ text: "50", correct: false }, { text: "14", correct: false }, { text: "15", correct: true }, { text: "49", correct: false },]},
+    {title: "9 + 7", choices: [{ text: "57", correct: false }, { text: "15", correct: false }, { text: "16", correct: true }, { text: "56", correct: false },]},
+    {title: "8 + 8", choices: [{ text: "64", correct: false }, { text: "15", correct: false }, { text: "16", correct: true }, { text: "63", correct: false },]},
+    {title: "9 + 8", choices: [{ text: "65", correct: false }, { text: "16", correct: false }, { text: "17", correct: true }, { text: "64", correct: false },]},
+    {title: "9 + 9", choices: [{ text: "73", correct: false }, { text: "17", correct: false }, { text: "18", correct: true }, { text: "72", correct: false },]}    
   ]
-  // [ //CSS Questions
-  //   {
-  //     title: "What does CSS stands for",
-  //     choices: [
-  //       { text: "strings", correct: false },
-  //       { text: "booleans", correct: false },
-  //       { text: "Cascading Style Sheets", correct: true },
-  //       { text: "numbers", correct: false },]
-  //   },
-  //   {
-  //     title: "What is the correct CSS for adding a background color?",
-  //     choices: [
-  //       { text: "color: yellow;", correct: false },
-  //       { text: "background-color-yellow;", correct: false },
-  //       { text: "background-color: yellow;", correct: true },
-  //       { text: "background-color: (yellow)", correct: false },]
-  //   },
-  //   {
-  //     title: "What is the correct order of margin property sets?",
-  //     choices: [
-  //       { text: "Top, Top, Top, and Top", correct: false },
-  //       { text: "Right, Bottom, Left, and Top", correct: false },
-  //       { text: "Top, Right, Bottom, and Left", correct: true },
-  //       { text: "Right, Bottom, Top, and Left", correct: false },]
-  //   },
-  //   {
-  //     title: "Which HTML tag is used to define an internal style sheet?",
-  //     choices: [
-  //       { text: "<callstyle>", correct: false },
-  //       { text: "<styles>", correct: false },
-  //       { text: "<style>", correct: true },
-  //       { text: "<css>", correct: false },]
-  //   },
-  //   {
-  //     title: "How do you insert a comment in a CSS file?",
-  //     choices: [
-  //       { text: "// this is a comment", correct: false },
-  //       { text: "// this is a comment //", correct: false },
-  //       { text: "/* this is a comment */", correct: true },
-  //       { text: "' this is a comment", correct: false },]
-  //   }
   // ], [ //Math Questions
   //   {
   //     title: "What is 25 * 37?",
