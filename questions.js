@@ -16,6 +16,7 @@ var correctSound = document.getElementById('correct-sound');
 var incorrectSound = document.getElementById('incorrect-sound');
 var scoreCount = 0;
 var scoreTotal = 0;
+var gradeLevel = "F";
 
 if (arrayHighScores === null) {
   arrayHighScores = [];
@@ -95,9 +96,6 @@ function showAnswer(element, correct) { // Step 4: Shows users if they are corre
   }
   scoreCount++ 
   if (scoreCount == 15) stopQuiz = true;
-  setTimeout(() => {
-    questionContainerElements.children[2].innerText = ''
-  }, 10000)
 }
 
 function getPlayerName() { //Step 5: Get player's name.
@@ -108,12 +106,31 @@ function getPlayerName() { //Step 5: Get player's name.
   if (countDown < 0) {
     countDown = 0
   }
-  inputBoxPlayerName.children[0].innerHTML = 'Your score is ' + scoreTotal + "/15"
+  
+  if (scoreTotal == 8) {
+    gradeLevel = "D";
+  } else if (scoreTotal == 9) {
+    gradeLevel = "C";
+  } else if (scoreTotal == 10) {
+    gradeLevel = "C+";
+  } else if (scoreTotal == 11) {
+    gradeLevel = "B";
+  } else if (scoreTotal == 12) {
+    gradeLevel = "A-";
+  } else if (scoreTotal == 13) {
+    gradeLevel = "A";
+  } else if (scoreTotal == 14) {
+    gradeLevel = "A+";
+  } else if (scoreTotal == 15) {
+    gradeLevel = "A++";
+  }
+
+  inputBoxPlayerName.children[0].innerHTML = 'Your score is ' + scoreTotal + "/15 Grade: " + gradeLevel;
   inputBoxPlayerName.children[4].addEventListener('click', (event) => {
     event.preventDefault()
     inputBoxPlayerName.children[2].value = inputBoxPlayerName.children[2].value.toUpperCase();
     if (pleaseStopIt) {
-      response = inputBoxPlayerName.children[2].value + "-" + scoreTotal + "/15.";
+      response = inputBoxPlayerName.children[2].value + ": " + scoreTotal + "/15 Grade: " + gradeLevel;
       arrayHighScores.push(response);
       pleaseStopIt = false;
       viewResults();
