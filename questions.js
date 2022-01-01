@@ -9,11 +9,13 @@ var countDown = 75; // Timer variables
 var stopQuiz, stopQuizViewHighScore = false;
 var inputBoxPlayerName = document.getElementById('input-box-name'); // High Score variables
 var submissionResponse = document.getElementById("show-results"); // Get player information
-var highScore = document.getElementById('high-score')
+var highScore = document.getElementById('high-score');
 var response = [];
 var arrayHighScores = JSON.parse(localStorage.getItem("arrayHighScores"));
-var correctSound = document.getElementById('correct-sound')
-var incorrectSound = document.getElementById('incorrect-sound')
+var correctSound = document.getElementById('correct-sound');
+var incorrectSound = document.getElementById('incorrect-sound');
+var scoreCount = 0;
+var scoreTotal = 0;
 
 if (arrayHighScores === null) {
   arrayHighScores = [];
@@ -82,6 +84,7 @@ function showAnswer(element, correct) { // Step 4: Shows users if they are corre
   if (correct) {
     questionContainerElements.children[2].innerText = "Correct"
     correctSound.play();
+    scoreTotal++ 
   } else {
     let correctAnswer = [] 
     questions[currentQuestionIndex].choices.forEach(choices => {
@@ -89,11 +92,12 @@ function showAnswer(element, correct) { // Step 4: Shows users if they are corre
     })
     questionContainerElements.children[2].innerText = "Incorrect: " + questions[currentQuestionIndex].title + " = " + correctAnswer
     incorrectSound.play();
-    countDown = countDown - 15;
   }
+  scoreCount++ 
+  if (scoreCount == 15) stopQuiz = true;
   setTimeout(() => {
     questionContainerElements.children[2].innerText = ''
-  }, 5000)
+  }, 10000)
 }
 
 function getPlayerName() { //Step 5: Get player's name.
@@ -104,12 +108,12 @@ function getPlayerName() { //Step 5: Get player's name.
   if (countDown < 0) {
     countDown = 0
   }
-  inputBoxPlayerName.children[0].innerHTML = 'Your score is ' + countDown
+  inputBoxPlayerName.children[0].innerHTML = 'Your score is ' + scoreTotal + "/15"
   inputBoxPlayerName.children[4].addEventListener('click', (event) => {
     event.preventDefault()
     inputBoxPlayerName.children[2].value = inputBoxPlayerName.children[2].value.toUpperCase();
     if (pleaseStopIt) {
-      response = inputBoxPlayerName.children[2].value + "-" + countDown + ".";
+      response = inputBoxPlayerName.children[2].value + "-" + scoreTotal + "/15.";
       arrayHighScores.push(response);
       pleaseStopIt = false;
       viewResults();
