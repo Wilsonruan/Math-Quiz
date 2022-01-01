@@ -83,13 +83,17 @@ function showAnswer(element, correct) { // Step 4: Shows users if they are corre
     questionContainerElements.children[2].innerText = "Correct"
     correctSound.play();
   } else {
-    questionContainerElements.children[2].innerText = "Incorrect"
+    let correctAnswer = [] 
+    questions[currentQuestionIndex].choices.forEach(choices => {
+      if (choices.correct) correctAnswer = choices.text;
+    })
+    questionContainerElements.children[2].innerText = "Incorrect: " + questions[currentQuestionIndex].title + " = " + correctAnswer
     incorrectSound.play();
     countDown = countDown - 15;
   }
   setTimeout(() => {
     questionContainerElements.children[2].innerText = ''
-  }, 500)
+  }, 5000)
 }
 
 function getPlayerName() { //Step 5: Get player's name.
@@ -103,16 +107,12 @@ function getPlayerName() { //Step 5: Get player's name.
   inputBoxPlayerName.children[0].innerHTML = 'Your score is ' + countDown
   inputBoxPlayerName.children[4].addEventListener('click', (event) => {
     event.preventDefault()
-    var checkInputBox = /^[a-z]+$/gi;
-    var resultsInputBox = checkInputBox.test(inputBoxPlayerName.children[2].value);
     inputBoxPlayerName.children[2].value = inputBoxPlayerName.children[2].value.toUpperCase();
-    if (inputBoxPlayerName.children[2].value.length == 2 && resultsInputBox) {
-      if (pleaseStopIt) {
-        response = inputBoxPlayerName.children[2].value + "-" + countDown + ".";
-        arrayHighScores.push(response);
-        pleaseStopIt = false;
-        viewResults();
-      }
+    if (pleaseStopIt) {
+      response = inputBoxPlayerName.children[2].value + "-" + countDown + ".";
+      arrayHighScores.push(response);
+      pleaseStopIt = false;
+      viewResults();
     } else {
       inputBoxPlayerName.children[1].textContent = "Please try again with your initials ONLY.";
       return;
@@ -201,127 +201,124 @@ var allQuestions = [
     { title: "9 x 9", choices: [{ text: "90", correct: false }, { text: "99", correct: false }, { text: "81", correct: true }, { text: "72", correct: false },] }
   ],
   [  //HTML Questions
-    {
-      title: "What does HTML stand for?",
-      choices: [
-        { text: "High Text Markup Language", correct: false },
-        { text: "Hyper Text Makeup Language", correct: false },
-        { text: "Hypertext Markup Language", correct: true },
-        { text: "Hide Text Mistake Lost", correct: false },]
-    },
-    {
-      title: "Which one is the correct HTML element?",
-      choices: [
-        { text: "class", correct: false },
-        { text: "function myfucntion()", correct: false },
-        { text: "<h1>", correct: true },
-        { text: "element", correct: false },]
-    },
-    {
-      title: "What is the correct HTML for adding a background color?",
-      choices: [
-        { text: "<style='background-color;yellow'>", correct: false },
-        { text: "<body 'background-color:yellow;'>", correct: false },
-        { text: "<body style='background-color:yellow;'>", correct: true },
-        { text: "<background-color-yellow;>", correct: false },]
-    },
-    {
-      title: "What element HTML bold text.",
-      choices: [
-        { text: "<li>", correct: false },
-        { text: "<br>", correct: false },
-        { text: "<strong>", correct: true },
-        { text: "<bold>", correct: false },]
-    },
-    {
-      title: "What are attribute in HTML?",
-      choices: [
-        { text: "It doesn nothing", correct: false },
-        { text: "Changes the HTML elements", correct: false },
-        { text: "Provide additional information about HTML elements", correct: true },
-        { text: "All Above", correct: false },]
-    }
-  ], [ //CSS Questions
-    {
-      title: "What does CSS stands for",
-      choices: [
-        { text: "strings", correct: false },
-        { text: "booleans", correct: false },
-        { text: "Cascading Style Sheets", correct: true },
-        { text: "numbers", correct: false },]
-    },
-    {
-      title: "What is the correct CSS for adding a background color?",
-      choices: [
-        { text: "color: yellow;", correct: false },
-        { text: "background-color-yellow;", correct: false },
-        { text: "background-color: yellow;", correct: true },
-        { text: "background-color: (yellow)", correct: false },]
-    },
-    {
-      title: "What is the correct order of margin property sets?",
-      choices: [
-        { text: "Top, Top, Top, and Top", correct: false },
-        { text: "Right, Bottom, Left, and Top", correct: false },
-        { text: "Top, Right, Bottom, and Left", correct: true },
-        { text: "Right, Bottom, Top, and Left", correct: false },]
-    },
-    {
-      title: "Which HTML tag is used to define an internal style sheet?",
-      choices: [
-        { text: "<callstyle>", correct: false },
-        { text: "<styles>", correct: false },
-        { text: "<style>", correct: true },
-        { text: "<css>", correct: false },]
-    },
-    {
-      title: "How do you insert a comment in a CSS file?",
-      choices: [
-        { text: "// this is a comment", correct: false },
-        { text: "// this is a comment //", correct: false },
-        { text: "/* this is a comment */", correct: true },
-        { text: "' this is a comment", correct: false },]
-    }
-  ], [ //Math Questions
-    {
-      title: "What is 25 * 37?",
-      choices: [
-        { text: "950", correct: false },
-        { text: "1000", correct: false },
-        { text: "925", correct: true },
-        { text: "975", correct: false },]
-    },
-    {
-      title: "What is 6 ÷ 2(1+2)?",
-      choices: [
-        { text: "9", correct: false },
-        { text: "3", correct: false },
-        { text: "0", correct: true },
-        { text: "6", correct: false },]
-    },
-    {
-      title: "What is 666 + 7777?",
-      choices: [
-        { text: "9443", correct: false },
-        { text: "131313", correct: false },
-        { text: "8443", correct: true },
-        { text: "7443", correct: false },]
-    },
-    {
-      title: "What is 9 - 3 ÷ 1 ÷ 3 + 1?",
-      choices: [
-        { text: "10", correct: false },
-        { text: "1", correct: false },
-        { text: "9", correct: true },
-        { text: "0", correct: false },]
-    },
-    {
-      title: "What is 43 x 67?",
-      choices: [
-        { text: "2818", correct: false },
-        { text: "2811", correct: false },
-        { text: "2881", correct: true },
-        { text: "2882", correct: false },]
-    }
+    { title: "4 ÷ 2", choices: [{ text: "3", correct: false }, { text: "1", correct: false }, { text: "2", correct: true }, { text: "4", correct: false },] },
+    { title: "6 ÷ 2", choices: [{ text: "5", correct: false }, { text: "2", correct: false }, { text: "3", correct: true }, { text: "4", correct: false },] },
+    { title: "8 ÷ 2", choices: [{ text: "7", correct: false }, { text: "3", correct: false }, { text: "4", correct: true }, { text: "6", correct: false },] },
+    { title: "10 ÷ 2", choices: [{ text: "9", correct: false }, { text: "4", correct: false }, { text: "5", correct: true }, { text: "8", correct: false },] },
+    { title: "12 ÷ 2", choices: [{ text: "11", correct: false }, { text: "5", correct: false }, { text: "6", correct: true }, { text: "10", correct: false },] },
+    { title: "14 ÷ 2", choices: [{ text: "13", correct: false }, { text: "6", correct: false }, { text: "7", correct: true }, { text: "12", correct: false },] },
+    { title: "16 ÷ 2", choices: [{ text: "15", correct: false }, { text: "7", correct: false }, { text: "8", correct: true }, { text: "14", correct: false },] },
+    { title: "18 ÷ 2", choices: [{ text: "17", correct: false }, { text: "8", correct: false }, { text: "9", correct: true }, { text: "16", correct: false },] },
+    { title: "9 ÷ 3", choices: [{ text: "19", correct: false }, { text: "2", correct: false }, { text: "3", correct: true }, { text: "18", correct: false },] },
+    { title: "12 ÷ 3", choices: [{ text: "10", correct: false }, { text: "3", correct: false }, { text: "4", correct: true }, { text: "9", correct: false },] },
+    { title: "15 ÷ 3", choices: [{ text: "13", correct: false }, { text: "4", correct: false }, { text: "5", correct: true }, { text: "12", correct: false },] },
+    { title: "18 ÷ 3", choices: [{ text: "16", correct: false }, { text: "5", correct: false }, { text: "6", correct: true }, { text: "15", correct: false },] },
+    { title: "21 ÷ 3", choices: [{ text: "19", correct: false }, { text: "6", correct: false }, { text: "7", correct: true }, { text: "18", correct: false },] },
+    { title: "24 ÷ 3", choices: [{ text: "22", correct: false }, { text: "7", correct: false }, { text: "8", correct: true }, { text: "21", correct: false },] },
+    { title: "27 ÷ 3", choices: [{ text: "25", correct: false }, { text: "8", correct: false }, { text: "9", correct: true }, { text: "24", correct: false },] },
+    { title: "16 ÷ 4", choices: [{ text: "28", correct: false }, { text: "3", correct: false }, { text: "4", correct: true }, { text: "27", correct: false },] },
+    { title: "20 ÷ 4", choices: [{ text: "17", correct: false }, { text: "4", correct: false }, { text: "5", correct: true }, { text: "16", correct: false },] },
+    { title: "24 ÷ 4", choices: [{ text: "21", correct: false }, { text: "5", correct: false }, { text: "6", correct: true }, { text: "20", correct: false },] },
+    { title: "28 ÷ 4", choices: [{ text: "25", correct: false }, { text: "6", correct: false }, { text: "7", correct: true }, { text: "24", correct: false },] },
+    { title: "32 ÷ 4", choices: [{ text: "29", correct: false }, { text: "7", correct: false }, { text: "8", correct: true }, { text: "28", correct: false },] },
+    { title: "36 ÷ 4", choices: [{ text: "33", correct: false }, { text: "8", correct: false }, { text: "9", correct: true }, { text: "32", correct: false },] },
+    { title: "25 ÷ 5", choices: [{ text: "37", correct: false }, { text: "4", correct: false }, { text: "5", correct: true }, { text: "36", correct: false },] },
+    { title: "30 ÷ 5", choices: [{ text: "26", correct: false }, { text: "5", correct: false }, { text: "6", correct: true }, { text: "25", correct: false },] },
+    { title: "35 ÷ 5", choices: [{ text: "31", correct: false }, { text: "6", correct: false }, { text: "7", correct: true }, { text: "30", correct: false },] },
+    { title: "40 ÷ 5", choices: [{ text: "36", correct: false }, { text: "7", correct: false }, { text: "8", correct: true }, { text: "35", correct: false },] },
+    { title: "45 ÷ 5", choices: [{ text: "41", correct: false }, { text: "8", correct: false }, { text: "9", correct: true }, { text: "40", correct: false },] },
+    { title: "36 ÷ 6", choices: [{ text: "46", correct: false }, { text: "5", correct: false }, { text: "6", correct: true }, { text: "45", correct: false },] },
+    { title: "42 ÷ 6", choices: [{ text: "37", correct: false }, { text: "6", correct: false }, { text: "7", correct: true }, { text: "36", correct: false },] },
+    { title: "48 ÷ 6", choices: [{ text: "43", correct: false }, { text: "7", correct: false }, { text: "8", correct: true }, { text: "42", correct: false },] },
+    { title: "54 ÷ 6", choices: [{ text: "49", correct: false }, { text: "8", correct: false }, { text: "9", correct: true }, { text: "48", correct: false },] },
+    { title: "49 ÷ 7", choices: [{ text: "55", correct: false }, { text: "6", correct: false }, { text: "7", correct: true }, { text: "54", correct: false },] },
+    { title: "56 ÷ 7", choices: [{ text: "50", correct: false }, { text: "7", correct: false }, { text: "8", correct: true }, { text: "49", correct: false },] },
+    { title: "63 ÷ 7", choices: [{ text: "57", correct: false }, { text: "8", correct: false }, { text: "9", correct: true }, { text: "56", correct: false },] },
+    { title: "64 ÷ 8", choices: [{ text: "64", correct: false }, { text: "7", correct: false }, { text: "8", correct: true }, { text: "63", correct: false },] },
+    { title: "72 ÷ 8", choices: [{ text: "65", correct: false }, { text: "8", correct: false }, { text: "9", correct: true }, { text: "64", correct: false },] },
+    { title: "81 ÷ 9", choices: [{ text: "73", correct: false }, { text: "8", correct: false }, { text: "9", correct: true }, { text: "72", correct: false },] }
   ]
+  // [ //CSS Questions
+  //   {
+  //     title: "What does CSS stands for",
+  //     choices: [
+  //       { text: "strings", correct: false },
+  //       { text: "booleans", correct: false },
+  //       { text: "Cascading Style Sheets", correct: true },
+  //       { text: "numbers", correct: false },]
+  //   },
+  //   {
+  //     title: "What is the correct CSS for adding a background color?",
+  //     choices: [
+  //       { text: "color: yellow;", correct: false },
+  //       { text: "background-color-yellow;", correct: false },
+  //       { text: "background-color: yellow;", correct: true },
+  //       { text: "background-color: (yellow)", correct: false },]
+  //   },
+  //   {
+  //     title: "What is the correct order of margin property sets?",
+  //     choices: [
+  //       { text: "Top, Top, Top, and Top", correct: false },
+  //       { text: "Right, Bottom, Left, and Top", correct: false },
+  //       { text: "Top, Right, Bottom, and Left", correct: true },
+  //       { text: "Right, Bottom, Top, and Left", correct: false },]
+  //   },
+  //   {
+  //     title: "Which HTML tag is used to define an internal style sheet?",
+  //     choices: [
+  //       { text: "<callstyle>", correct: false },
+  //       { text: "<styles>", correct: false },
+  //       { text: "<style>", correct: true },
+  //       { text: "<css>", correct: false },]
+  //   },
+  //   {
+  //     title: "How do you insert a comment in a CSS file?",
+  //     choices: [
+  //       { text: "// this is a comment", correct: false },
+  //       { text: "// this is a comment //", correct: false },
+  //       { text: "/* this is a comment */", correct: true },
+  //       { text: "' this is a comment", correct: false },]
+  //   }
+  // ], [ //Math Questions
+  //   {
+  //     title: "What is 25 * 37?",
+  //     choices: [
+  //       { text: "950", correct: false },
+  //       { text: "1000", correct: false },
+  //       { text: "925", correct: true },
+  //       { text: "975", correct: false },]
+  //   },
+  //   {
+  //     title: "What is 6 ÷ 2(1+2)?",
+  //     choices: [
+  //       { text: "9", correct: false },
+  //       { text: "3", correct: false },
+  //       { text: "0", correct: true },
+  //       { text: "6", correct: false },]
+  //   },
+  //   {
+  //     title: "What is 666 + 7777?",
+  //     choices: [
+  //       { text: "9443", correct: false },
+  //       { text: "131313", correct: false },
+  //       { text: "8443", correct: true },
+  //       { text: "7443", correct: false },]
+  //   },
+  //   {
+  //     title: "What is 9 - 3 ÷ 1 ÷ 3 + 1?",
+  //     choices: [
+  //       { text: "10", correct: false },
+  //       { text: "1", correct: false },
+  //       { text: "9", correct: true },
+  //       { text: "0", correct: false },]
+  //   },
+  //   {
+  //     title: "What is 43 x 67?",
+  //     choices: [
+  //       { text: "2818", correct: false },
+  //       { text: "2811", correct: false },
+  //       { text: "2881", correct: true },
+  //       { text: "2882", correct: false },]
+  //   }
+  // ]
 ]
